@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/Products-Servlet")
@@ -87,8 +88,19 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "delete":
                 deleteProduct(request,response);
+                break;
+            case "Search":
+                searchProduct(request,response);
+                break;
 
         }
+    }
+
+    private void searchProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("values").trim();
+        Product product = productService.findByName(name);
+        request.setAttribute("newProduct",product);
+        request.getRequestDispatcher("/product/search.jsp").forward(request,response);
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {

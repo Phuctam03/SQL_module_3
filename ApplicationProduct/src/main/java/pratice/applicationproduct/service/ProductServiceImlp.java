@@ -42,6 +42,12 @@ public class ProductServiceImlp implements ProductService {
     }
     @Override
     public Product findByName(String nameProduct) {
-        return null;
+        for (Map.Entry<Integer,Product> entry:myProducts.entrySet()){
+            Product product = entry.getValue();
+            if(product.getNameProduct().equalsIgnoreCase(nameProduct)){
+                return product;
+            }
+        }
+          return null;
     }
 }

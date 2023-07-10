@@ -13,7 +13,10 @@
 </head>
 <body>
 <h1>List-Product</h1>
-<a href="/Products-Servlet?action=create" style="color: red">Create new Product</a>
+<a href="/Products-Servlet?action=create" style="color: red">Create new Product</a></br></br>
+<form method="post" action="/Products-Servlet?action=Search">
+   <input type="text" name="values"> <span><input type="submit" value="Search"></span></br>
+</form>
 <table border="1" >
     <tr>
         <th>ID</th>
